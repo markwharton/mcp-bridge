@@ -17,6 +17,12 @@ Claude Code supports HTTP transport natively, but has [known issues](https://git
 
 ### 1. Install
 
+**Homebrew (recommended on macOS):**
+
+```bash
+brew install markwharton/plankit/mcp-bridge
+```
+
 **Pre-built binaries:** Download from [Releases](https://github.com/markwharton/mcp-bridge/releases), then:
 
 ```bash
@@ -274,7 +280,6 @@ make install     # Install to GOPATH/bin
 ## Future Enhancements
 
 - **Full SSE streaming** - Parse `text/event-stream` responses for servers using streaming mode
-- **Homebrew tap** - `brew install markwharton/tap/mcp-bridge`
 - **Claude Code `.mcp.json` support** - Project-scoped config management
 
 ## License

@@ -28,7 +28,7 @@ IMPORTANT: Follow these rules at all times.
 - **Tests override to `CGO_ENABLED=1`** because `go test -race` requires cgo. Make this explicit in the `test` target.
 - **Build:** `make build` (current platform → `dist/`), `make build-all` (darwin amd64/arm64, linux amd64/arm64, windows amd64).
 - **Test:** `make test` (runs `CGO_ENABLED=1 go test -v -race ./...`). Use `httptest.NewServer` for HTTP tests and `t.TempDir()` for filesystem tests.
-- **Lint / format:** `make lint` (`go vet`), `make fmt` (`go fmt`).
+- **Lint / format:** `make lint` runs `go vet` + a `gofmt -l` drift check (fails if any tracked package needs formatting). `make fmt` (`go fmt`) is the autofix.
 - **Install:** `make install` → `$GOPATH/bin`.
 
 ### Branches & Release

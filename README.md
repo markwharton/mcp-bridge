@@ -1,5 +1,10 @@
 # mcp-bridge
 
+[![CI](https://github.com/markwharton/mcp-bridge/actions/workflows/ci.yml/badge.svg)](https://github.com/markwharton/mcp-bridge/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/markwharton/mcp-bridge/graph/badge.svg?token=pIUP6YrtKk)](https://codecov.io/gh/markwharton/mcp-bridge)
+[![Go](https://img.shields.io/badge/Go-1.21-00ADD8.svg)](https://go.dev/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 A lightweight Go binary that bridges stdio-based MCP clients (like Claude Desktop) to remote HTTP-based MCP servers. Single binary, zero dependencies, ~5.5MB.
 
 ## Why?

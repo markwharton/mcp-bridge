@@ -1,0 +1,9 @@
+# Build output
+dist/
+
+# Coverage
+coverage.out
+
+# Editor and OS
+*.bak
+.DS_Store

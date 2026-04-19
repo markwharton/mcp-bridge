@@ -15,7 +15,7 @@ IMPORTANT: Follow these rules at all times.
 
 ## Project Conventions
 
-**Status:** Fresh repo — no source code yet. Conventions below describe the intended Go stack, informed by `../plankit` (mature, production-tested) with source code porting from `../mcp-bridge-go`.
+**Status:** Ported from markwharton/mcp-bridge-go, informed by patterns from markwharton/plankit (mature, production-tested). Conventions below describe the Go stack as implemented.
 
 ### Stack & Layout
 - **Go**, stdlib only — zero external dependencies. Floor version declared in `go.mod`.

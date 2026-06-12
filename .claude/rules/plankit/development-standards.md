@@ -1,6 +1,7 @@
 ---
 description: Data-first, fail fast, consistency, two-pass, verification, security, and debugging
-pk_sha256: caa4c93bfe8f51a8f276807ec57e36d4b23c3992b746019aa9f784535d437a02
+kind: craft
+pk_sha256: c028397baebd320422ff961a73c0d9da558879ef4d720f8f65f48c2886da00e9
 ---
 
 # Development Standards
@@ -8,7 +9,7 @@ pk_sha256: caa4c93bfe8f51a8f276807ec57e36d4b23c3992b746019aa9f784535d437a02
 ## Data-First, Model-First
 
 - **Preserve the structure you were given.** When data has hierarchy, parse and maintain it. Let the data model drive the code, not the other way around.
-- **Never flatten structured data into flat lists then reconstruct with heuristics** — the context is already lost.
+- **Never flatten structured data into flat lists then reconstruct with heuristics.** The context is already lost.
 
 ## Fail Fast, No Silent Fallbacks
 
@@ -21,18 +22,18 @@ pk_sha256: caa4c93bfe8f51a8f276807ec57e36d4b23c3992b746019aa9f784535d437a02
 
 ## Two-Pass Code Generation
 
-- **First pass:** Get it working — focus on correctness and completeness.
-- **Second pass:** Review — look for DRY violations, missing abstractions, magic numbers, and unnecessary complexity. Refactor what you find.
+- **First pass:** Get it working. Focus on correctness and completeness.
+- **Second pass:** Review for DRY violations, missing abstractions, magic numbers, and unnecessary complexity. Refactor what you find.
 - **Resist premature abstraction.** Three similar lines is better than the wrong abstraction. ([The Wrong Abstraction](https://sandimetz.com/blog/2016/1/20/the-wrong-abstraction))
 
 ## Verification: Automated and Smoke
 
 Work isn't done until both tiers pass:
 
-- **Automated** — build, tests, and linter all pass. CI should enforce this.
-- **Smoke** — a manual end-to-end check of the change, with specific commands and observable outcomes (file contents, stdout strings, exit codes, hook behavior). Include at least one negative case. Required whenever the change alters observable behavior — CLI output, scripts, tool integrations, file writes, or anything a user or downstream consumer can see. Skip for pure internal refactors.
+- **Automated:** Build, tests, and linter all pass. CI should enforce this.
+- **Smoke:** A manual end-to-end check of the change, with specific commands and observable outcomes (file contents, stdout strings, exit codes, hook behavior). Include at least one negative case. Required whenever the change alters observable behavior: CLI output, scripts, tool integrations, file writes, or anything a user or downstream consumer can see. Skip for pure internal refactors.
 
-Unit tests verify isolated behavior in mocks; smoke tests verify the wiring. The goal is "I actually ran this and saw the right thing" — not "the tests might catch it."
+Unit tests verify isolated behavior in mocks; smoke tests verify the wiring. The goal is "I actually ran this and saw the right thing," not "the tests might catch it."
 
 ## Security
 
@@ -42,3 +43,4 @@ Unit tests verify isolated behavior in mocks; smoke tests verify the wiring. The
 ## Debugging
 
 - **Diagnostic scripts over rebuild cycles.** When debugging, create a minimal script that tests the specific issue. If you are about to do your second full rebuild, stop and write a diagnostic script instead.
+- **A failed text search means "not found by this method," never "not present."** Search matches only the stored surface form, so structured artifacts hide content from naive patterns (escaped JSON like `\"Field\"`, encoded IDs, split values). A false "not found" drives a wrong root cause and a fix for a bug that doesn't exist. When absence drives a root cause or code change, confirm by parsing the structure (walk the JSON/XML/AST), not the serialized surface.

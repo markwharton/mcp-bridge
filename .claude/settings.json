@@ -6,20 +6,22 @@
         "hooks": [
           {
             "type": "command",
-            "command": "pk preserve --notify",
-            "timeout": 10,
-            "statusMessage": "Checking plan..."
+            "command": "pk preserve",
+            "shell": "bash",
+            "timeout": 30,
+            "statusMessage": "Preserving plan..."
           }
         ]
       }
     ],
     "PreToolUse": [
       {
-        "matcher": "Bash",
+        "matcher": "Bash|PowerShell",
         "hooks": [
           {
             "type": "command",
             "command": "pk guard",
+            "shell": "bash",
             "timeout": 5
           }
         ]
@@ -30,6 +32,7 @@
           {
             "type": "command",
             "command": "pk protect",
+            "shell": "bash",
             "timeout": 5
           }
         ]
@@ -40,6 +43,7 @@
           {
             "type": "command",
             "command": "pk protect",
+            "shell": "bash",
             "timeout": 5
           }
         ]
@@ -52,6 +56,7 @@
           {
             "type": "command",
             "command": ".claude/install-pk.sh",
+            "shell": "bash",
             "timeout": 30
           }
         ]

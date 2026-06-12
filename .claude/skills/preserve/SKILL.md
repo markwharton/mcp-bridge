@@ -3,22 +3,21 @@ name: preserve
 description: Preserve the most recently approved plan to docs/plans/
 disable-model-invocation: true
 allowed-tools: Bash(pk:*)
-pk_sha256: b201b6dcd420d994ec65cd0b53b0be78c37dd4d9be7fd1548de8fbb23c3a0f45
+pk_sha256: a2c5d044b83ff3105610267085e3378c29abb2045061a8c24d46115b8e5ad508
 ---
 
-Preserve the most recently approved plan to docs/plans/ and commit it.
+Preserve the most recently approved plan to docs/plans/ and commit it. If you are in plan mode, exit plan mode first.
 
-First, preview with a dry run:
-
-pk preserve --dry-run
-
-Show the preview to the user and ask for confirmation before proceeding.
-If confirmed, run:
+Run using the **Bash** tool (not PowerShell):
 
 pk preserve
 
-This commits the plan locally. Do not push — the user decides when to push.
+This commits the plan locally with a `plan:` conventional commit. Do not push — the user decides when to push.
 
 Report the result to the user.
 
 With the plan preserved, proceed with its implementation.
+
+## Rules
+
+- **Use the Bash tool for all commands.** pk requires a POSIX shell. Do not use the PowerShell tool.

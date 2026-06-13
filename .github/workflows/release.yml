@@ -54,6 +54,7 @@ jobs:
         with:
           name: mcp-bridge-${{ matrix.suffix }}
           path: mcp-bridge-${{ matrix.suffix }}${{ matrix.ext }}
+          retention-days: 1
 
   release:
     needs: build
